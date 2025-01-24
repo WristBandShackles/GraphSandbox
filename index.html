@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circle Creator</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
+            overflow: hidden;
+            position: relative;
+        }
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(0, 123, 255, 0.7);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.body.addEventListener('click', (event) => {
+            // Create a new circle element
+            const circle = document.createElement('div');
+
+            // Set circle dimensions
+            const size = Math.random() * 50 + 20; // Random size between 20px and 70px
+            circle.style.width = `${size}px`;
+            circle.style.height = `${size}px`;
+
+            // Set circle position
+            circle.style.left = `${event.clientX - size / 2}px`;
+            circle.style.top = `${event.clientY - size / 2}px`;
+
+            // Add circle class
+            circle.classList.add('circle');
+
+            // Append the circle to the body
+            document.body.appendChild(circle);
+
+            // Remove the circle after animation
+            setTimeout(() => {
+                circle.remove();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
